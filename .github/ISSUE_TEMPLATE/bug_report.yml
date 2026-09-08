@@ -1,0 +1,69 @@
+name: Bug report
+description: Something captured wrong, saved wrong, or did not work
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. The page URL and the console output are what make a bug fixable —
+        please include them if you can.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you get instead?
+      placeholder: I captured an article and the code blocks lost their language tag.
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page you were capturing
+      description: Only if it is public. Skip it if the page is private or behind a login.
+      placeholder: https://example.com/article
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1. Open the page above
+        2. Click the toolbar icon
+        3. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: entry-point
+    attributes:
+      label: How did you start the capture?
+      options:
+        - Toolbar icon
+        - Keyboard shortcut
+        - Right-click menu
+        - Not sure
+    validations:
+      required: false
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: >
+        Right-click the extension icon → Inspect service worker, and paste anything in red.
+        For extraction problems, the page's own console (F12) may have more.
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: versions
+    attributes:
+      label: Chrome version and OS
+      placeholder: Chrome 152 on macOS 15
+    validations:
+      required: true

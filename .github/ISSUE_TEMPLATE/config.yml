@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/phuthuycoding/Page2Markdown/security/advisories/new
+    about: Report privately, never in a public issue.
+  - name: How it works
+    url: https://github.com/phuthuycoding/Page2Markdown#how-it-works
+    about: The data flow and the reasoning behind it.

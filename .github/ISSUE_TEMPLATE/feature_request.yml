@@ -1,0 +1,34 @@
+name: Feature request
+description: Suggest something the extension should do
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Page2Markdown converts the page you are on into a Markdown file. Anything that needs a
+        server, an account, or sending your data somewhere is out of scope by design — that
+        constraint is the point of the extension.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is the problem?
+      description: Describe what you were trying to do, not the solution you have in mind.
+      placeholder: When I clip documentation pages, the sidebar navigation ends up in the file.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What would you like it to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: How do you handle it today?
+      description: Another extension, a manual step, or nothing at all.
+    validations:
+      required: false

@@ -2,7 +2,7 @@
 
 # Page2Markdown
 
-**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · *[English](README.md)*
+**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · _[English](README.md)_
 
 Chrome extension (Manifest V3) lưu trang web đang xem — hoặc đúng vùng đang bôi đen — thành file Markdown sạch, kèm YAML frontmatter để bỏ thẳng vào Obsidian.
 
@@ -10,10 +10,10 @@ Chrome extension (Manifest V3) lưu trang web đang xem — hoặc đúng vùng 
 
 ### Ba lối vào, cùng một đích
 
-| Lối vào | Dùng khi |
-| --- | --- |
-| Bấm icon trên toolbar | Mặc định |
-| `Cmd/Ctrl + Shift + M` | Không muốn rời bàn phím |
+| Lối vào                                | Dùng khi                |
+| -------------------------------------- | ----------------------- |
+| Bấm icon trên toolbar                  | Mặc định                |
+| `Cmd/Ctrl + Shift + M`                 | Không muốn rời bàn phím |
 | Chuột phải → **Save Page To Markdown** | Đã bôi đen sẵn một đoạn |
 
 Cả ba đều dẫn về **editor mở trong tab riêng**: toolbar định dạng, ô soạn Markdown, preview cạnh bên. Không còn popup — popup sống 4 giây thì không đủ chỗ để sửa gì cho tử tế.
@@ -111,28 +111,15 @@ Bấm ⚙ góc phải editor để mở trang cài đặt.
 
 Trong editor, đổi **phạm vi** hay **ảnh** chỉ có tác dụng cho lần clip sau — hai thứ đó quyết định lúc chuyển HTML sang Markdown, mà việc đó đã xong trước khi tab editor mở.
 
-## Kiếm tiền
+## Đóng góp
 
-- `WELCOME_URL` trong `src/config/index.ts` — trang chào mừng nằm trên web của mình, mở khi cài mới và khi lên minor/major. Để rỗng thì không mở tab nào. Đặt trên web chứ không phải trang extension để sửa nội dung mà không phải nộp lại bản build.
-- `AUTHOR_NAME` / `AUTHOR_URL` / `REPO_URL` — dòng credit ở chân editor và trang cài đặt, kèm lời mời star. **Nhớ chuyển repo sang public trước khi phát hành**, không thì người dùng bấm vào chỉ nhận 404.
-- `DONATE_URL` — để rỗng thì không hiện gì. Repo public rồi thì dùng thẳng `https://github.com/sponsors/<username>`: 0% phí và Việt Nam nằm trong danh sách vùng được hỗ trợ.
-
-Tất cả chỉ là link tĩnh — không script, không tracker, nên không đụng CSP của MV3 và giữ nguyên được lời hứa "no tracking" trên store.
-
-## Nộp Chrome Web Store
+Xem [CONTRIBUTING.md](CONTRIBUTING.md) — cách dựng môi trường, quy ước commit, và những gì người
+review sẽ soi. Lỗi bảo mật thì đọc [SECURITY.md](SECURITY.md) trước, đừng mở issue công khai.
 
 ```bash
-bun run package   # build + đóng gói store/page2markdown-<version>.zip
+bun install        # cài luôn git hook
+bun run check      # format + typecheck + lint + test + build
 ```
-
-Thư mục `store/` **không nằm trong git** (xem `.gitignore`) — toàn bộ là tài sản dựng lại được:
-
-- `store/LISTING.md` — text dán vào Developer Dashboard, kèm giải trình từng permission.
-- `store/screenshots/` — 3 ảnh 1280×800; `store/promo/` — tile 440×280 (bắt buộc) và marquee 1400×560.
-- Trang chính sách giờ nằm ở `docs/privacy.html`, phát hành qua GitHub Pages tại
-  <https://phuthuycoding.github.io/Page2Markdown/privacy.html> — đó là URL dán vào ô Privacy policy.
-
-Giao diện extension dùng tiếng Anh; tài liệu trong repo giữ tiếng Việt.
 
 ## Giấy phép
 

@@ -9,7 +9,7 @@
 
 A Chrome extension (Manifest V3) — a **web clipper** that turns the page you are reading, or just the part you highlighted, into a clean **Markdown** file with **YAML frontmatter**, ready for **Obsidian**, Logseq, or any plain notes folder.
 
-**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · *[Tiếng Việt](README.vi.md)*
+**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · _[Tiếng Việt](README.vi.md)_
 
 ## What you get
 
@@ -25,11 +25,11 @@ A Chrome extension (Manifest V3) — a **web clipper** that turns the page you a
 
 ### Three ways in, one destination
 
-| Entry point | Use it when |
-| --- | --- |
-| Toolbar icon | Default |
-| `Cmd/Ctrl + Shift + M` | You don't want to leave the keyboard |
-| Right click → **Save Page To Markdown** | You already highlighted a passage |
+| Entry point                             | Use it when                          |
+| --------------------------------------- | ------------------------------------ |
+| Toolbar icon                            | Default                              |
+| `Cmd/Ctrl + Shift + M`                  | You don't want to leave the keyboard |
+| Right click → **Save Page To Markdown** | You already highlighted a passage    |
 
 All three open an **editor in its own tab**: formatting toolbar, Markdown source, live preview beside it. There is no popup — a popup that lives four seconds is not enough room to fix anything properly.
 
@@ -130,14 +130,14 @@ Inside the editor, changing **scope** or **images** only affects your next captu
 
 ## How it compares
 
-| | Page2Markdown | Copy & paste | Print to PDF |
-| --- | --- | --- | --- |
-| Keeps code blocks with language | ✅ | ❌ | ❌ |
-| GFM tables | ✅ | partly | ❌ |
-| Source URL and author recorded | ✅ | ❌ | ❌ |
-| Editable before saving | ✅ | ✅ | ❌ |
-| Plain text you can grep and diff | ✅ | ✅ | ❌ |
-| Works offline afterwards | text yes, images by URL | ✅ | ✅ |
+|                                  | Page2Markdown           | Copy & paste | Print to PDF |
+| -------------------------------- | ----------------------- | ------------ | ------------ |
+| Keeps code blocks with language  | ✅                      | ❌           | ❌           |
+| GFM tables                       | ✅                      | partly       | ❌           |
+| Source URL and author recorded   | ✅                      | ❌           | ❌           |
+| Editable before saving           | ✅                      | ✅           | ❌           |
+| Plain text you can grep and diff | ✅                      | ✅           | ❌           |
+| Works offline afterwards         | text yes, images by URL | ✅           | ✅           |
 
 ## Known limits
 
@@ -150,19 +150,17 @@ Inside the editor, changing **scope** or **images** only affects your next captu
 
 No server, no account, no analytics, no tracking. The extension reads a page only when you ask, and only the page you are on. Captured text is held in local storage just long enough for the editor tab to pick it up, then deleted. See the [privacy policy](https://phuthuycoding.github.io/Page2Markdown/privacy.html).
 
-## Configuration for maintainers
-
-`src/config/index.ts` holds the few values you may want to change when publishing your own build:
-
-- `AUTHOR_NAME` / `AUTHOR_URL` / `REPO_URL` — the credit line at the bottom of the editor and the settings page.
-- `DONATE_URL` — leave empty and no donation link renders at all.
-- `WELCOME_URL` — a page on your own site, opened on install and on minor/major upgrades. Empty means no tab is ever opened.
-
-All of them are plain links: no scripts, no trackers, nothing that would contradict the privacy claims above.
-
 ## Contributing
 
-Issues and pull requests are welcome. Run `bun run check` before opening a PR; `bun run test:e2e` needs a Chrome that Playwright can drive (`bunx playwright install chromium`).
+Issues and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the setup, the
+commit convention, and what reviewers look for. By taking part you agree to the
+[Code of Conduct](CODE_OF_CONDUCT.md). Found a security problem? Please read
+[SECURITY.md](SECURITY.md) first — do not open a public issue.
+
+```bash
+bun install        # installs the git hooks too
+bun run check      # format + typecheck + lint + tests + build
+```
 
 ## License
 
