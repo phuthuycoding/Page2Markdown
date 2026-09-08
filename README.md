@@ -1,10 +1,25 @@
-<img src="assets/logo.png" width="96" alt="Page2Markdown">
+<img src="assets/logo.png" width="96" alt="Page2Markdown logo">
 
-# Page2Markdown
+# Page2Markdown — save any web page as Markdown
 
-A Chrome extension (Manifest V3) that turns the page you are reading — or just the part you highlighted — into a clean Markdown file with YAML frontmatter, ready for Obsidian.
+[![License: MIT](https://img.shields.io/badge/License-MIT-6d3fe8.svg)](LICENSE)
+[![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-6d3fe8.svg)](manifest.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)](tsconfig.json)
+[![Tests](https://img.shields.io/badge/tests-66%20unit%20%2B%2030%20e2e-22c55e.svg)](#tests)
+
+A Chrome extension (Manifest V3) — a **web clipper** that turns the page you are reading, or just the part you highlighted, into a clean **Markdown** file with **YAML frontmatter**, ready for **Obsidian**, Logseq, or any plain notes folder.
 
 *[Tiếng Việt](README.vi.md)*
+
+## What you get
+
+- **Readable output, not a dump.** Navigation, ads, and sidebars stripped by [Readability](https://github.com/mozilla/readability); the HTML converted by [Turndown](https://github.com/mixmark-io/turndown).
+- **Frontmatter that fits your vault.** Title, source URL, author, publication date, capture time, description, tags — pick which fields appear.
+- **Markdown that survives.** GFM tables, fenced code blocks that keep their language, nested lists at the right indent, image captions, absolute URLs.
+- **An editor, not a popup.** Formatting toolbar and live preview, so you fix things before the file lands on disk.
+- **Nothing leaves your machine.** No server, no account, no analytics, no tracking.
+
+![Page2Markdown editor](store/screenshots/01-preview.png)
 
 ## How it works
 
@@ -112,6 +127,17 @@ Click ⚙ in the top right of the editor.
 - **Markdown style**: ATX or Setext headings, bullet marker, fenced or indented code blocks.
 
 Inside the editor, changing **scope** or **images** only affects your next capture — both decide how HTML becomes Markdown, and that already happened before the tab opened.
+
+## How it compares
+
+| | Page2Markdown | Copy & paste | Print to PDF |
+| --- | --- | --- | --- |
+| Keeps code blocks with language | ✅ | ❌ | ❌ |
+| GFM tables | ✅ | partly | ❌ |
+| Source URL and author recorded | ✅ | ❌ | ❌ |
+| Editable before saving | ✅ | ✅ | ❌ |
+| Plain text you can grep and diff | ✅ | ✅ | ❌ |
+| Works offline afterwards | text yes, images by URL | ✅ | ✅ |
 
 ## Known limits
 
