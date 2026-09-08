@@ -48,10 +48,7 @@ class DownloadService {
         else if (delta.state?.current === 'interrupted') finish(delta.error?.current ?? 'unknown');
       };
 
-      const timer = setTimeout(
-        () => finish('TIMEOUT'),
-        COMPLETION_TIMEOUT_MS
-      );
+      const timer = setTimeout(() => finish('TIMEOUT'), COMPLETION_TIMEOUT_MS);
 
       chrome.downloads.onChanged.addListener(onChanged);
 

@@ -10,14 +10,7 @@ export type CodeBlockStyle = 'fenced' | 'indented';
 
 /** Các trường có thể xuất hiện trong YAML frontmatter. */
 export type FrontmatterField =
-  | 'title'
-  | 'source'
-  | 'author'
-  | 'published'
-  | 'captured'
-  | 'description'
-  | 'site'
-  | 'tags';
+  'title' | 'source' | 'author' | 'published' | 'captured' | 'description' | 'site' | 'tags';
 
 export interface Settings {
   contentMode: ContentMode;

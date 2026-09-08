@@ -93,7 +93,11 @@ try {
     return { capture: await probe('p2m-capture'), bogus: await probe('p2m-khong-ton-tai') };
   });
   check('menu "Save Page To Markdown" được tạo', menus.capture === true, String(menus.capture));
-  check('phép thử ngược: id không tồn tại thì báo lỗi', typeof menus.bogus === 'string', String(menus.bogus));
+  check(
+    'phép thử ngược: id không tồn tại thì báo lỗi',
+    typeof menus.bogus === 'string',
+    String(menus.bogus)
+  );
 
   const page = await context.newPage();
   await page.goto(`chrome-extension://${extensionId}/src/options/options.html`);
@@ -119,20 +123,36 @@ try {
     'không thấy đường dẫn nào trong dist/assets'
   );
 
-  check('options render đủ 8 chip frontmatter', (await page.locator('#frontmatterFields .chip').count()) === 8);
+  check(
+    'options render đủ 8 chip frontmatter',
+    (await page.locator('#frontmatterFields .chip').count()) === 8
+  );
 
   await page.selectOption('#imageMode', 'strip');
   await page.fill('#filenameTemplate', '{domain}/{slug}');
   await page.dispatchEvent('#filenameTemplate', 'change');
   await page.waitForTimeout(500);
 
-  const stored = await page.evaluate(async () => (await chrome.storage.sync.get('p2m_settings')).p2m_settings);
-  check('đổi option ghi vào chrome.storage.sync', stored?.imageMode === 'strip', String(stored?.imageMode));
-  check('sửa mẫu tên file được lưu lại', stored?.filenameTemplate === '{domain}/{slug}', String(stored?.filenameTemplate));
+  const stored = await page.evaluate(
+    async () => (await chrome.storage.sync.get('p2m_settings')).p2m_settings
+  );
+  check(
+    'đổi option ghi vào chrome.storage.sync',
+    stored?.imageMode === 'strip',
+    String(stored?.imageMode)
+  );
+  check(
+    'sửa mẫu tên file được lưu lại',
+    stored?.filenameTemplate === '{domain}/{slug}',
+    String(stored?.filenameTemplate)
+  );
 
   await page.reload();
   await page.waitForSelector('#frontmatterFields .chip');
-  check('mở lại options thấy đúng giá trị đã lưu', (await page.inputValue('#imageMode')) === 'strip');
+  check(
+    'mở lại options thấy đúng giá trị đã lưu',
+    (await page.inputValue('#imageMode')) === 'strip'
+  );
 
   await page.click('#reset');
   await page.waitForTimeout(500);
@@ -142,7 +162,8 @@ try {
   check('nút "về mặc định" khôi phục đúng', afterReset === 'keep', String(afterReset));
 
   const saved = await page.evaluate(async () => {
-    const text = '---\ntitle: "Bài kiểm thử"\n---\n\n# Bài kiểm thử\n\nNội dung tiếng Việt có dấu.\n';
+    const text =
+      '---\ntitle: "Bài kiểm thử"\n---\n\n# Bài kiểm thử\n\nNội dung tiếng Việt có dấu.\n';
     try {
       const id = await chrome.downloads.download({
         url: `data:text/markdown;charset=utf-8,${encodeURIComponent(text)}`,
@@ -175,7 +196,11 @@ try {
   await editorEmpty.goto(`chrome-extension://${extensionId}/src/editor/editor.html`);
   await editorEmpty.waitForSelector('#stateError:not(.hidden)', { timeout: 10000 });
   const emptyMessage = (await editorEmpty.textContent('#errorMessage')) ?? '';
-  check('editor không có draft thì báo lỗi có nội dung', emptyMessage.trim().length > 0, emptyMessage);
+  check(
+    'editor không có draft thì báo lỗi có nội dung',
+    emptyMessage.trim().length > 0,
+    emptyMessage
+  );
 
   // Nạp một draft đúng như background vẫn làm, rồi mở editor bằng id đó.
   const draftId = await page.evaluate(async () => {
@@ -207,10 +232,21 @@ try {
   await editor.goto(`chrome-extension://${extensionId}/src/editor/editor.html?draft=${draftId}`);
   await editor.waitForSelector('#stateReady:not(.hidden)', { timeout: 10000 });
 
-  check('editor dựng được nội dung từ draft', (await editor.inputValue('#title')) === 'End to end sample');
+  check(
+    'editor dựng được nội dung từ draft',
+    (await editor.inputValue('#title')) === 'End to end sample'
+  );
   const loaded = await editor.inputValue('#markdown');
-  check('markdown gồm frontmatter và thân bài', loaded.startsWith('---\n') && loaded.includes('Some **body** text.'), loaded.slice(0, 120));
-  check('tên file suy ra từ tiêu đề', (await editor.textContent('#filename'))?.includes('end-to-end-sample') === true, await editor.textContent('#filename'));
+  check(
+    'markdown gồm frontmatter và thân bài',
+    loaded.startsWith('---\n') && loaded.includes('Some **body** text.'),
+    loaded.slice(0, 120)
+  );
+  check(
+    'tên file suy ra từ tiêu đề',
+    (await editor.textContent('#filename'))?.includes('end-to-end-sample') === true,
+    await editor.textContent('#filename')
+  );
 
   // Toolbar phải sửa thật vào ô soạn thảo
   await editor.evaluate(() => {
@@ -220,11 +256,18 @@ try {
     area.focus();
   });
   await editor.click('.toolbar button[data-command="italic"]');
-  check('nút italic chèn đúng dấu vào ô soạn thảo', (await editor.inputValue('#markdown')).includes('_body_'));
+  check(
+    'nút italic chèn đúng dấu vào ô soạn thảo',
+    (await editor.inputValue('#markdown')).includes('_body_')
+  );
 
   // Preview chạy trong iframe sandbox, phải render ra HTML thật
   const previewHeading = await editor.frameLocator('#preview').locator('h2').first().textContent();
-  check('preview render markdown thành HTML', previewHeading?.trim() === 'Heading', String(previewHeading));
+  check(
+    'preview render markdown thành HTML',
+    previewHeading?.trim() === 'Heading',
+    String(previewHeading)
+  );
 
   const credits = await editor.evaluate(() => {
     const root = document.getElementById('credits');
@@ -237,16 +280,29 @@ try {
       })),
     };
   });
-  check('chân editor có credit tác giả', credits.text.includes('Made by phuthuycoding'), credits.text);
-  check('có lời mời star kèm link repo', credits.links.some((l) => l.href.includes('github.com/phuthuycoding/Page2Markdown')), JSON.stringify(credits.links));
+  check(
+    'chân editor có credit tác giả',
+    credits.text.includes('Made by phuthuycoding'),
+    credits.text
+  );
+  check(
+    'có lời mời star kèm link repo',
+    credits.links.some((l) => l.href.includes('github.com/phuthuycoding/Page2Markdown')),
+    JSON.stringify(credits.links)
+  );
   check('lời mời star đọc ra là star', credits.text.includes('star it on GitHub'), credits.text);
   check(
     'mọi link credit mở tab mới và có rel noopener',
-    credits.links.length > 0 && credits.links.every((l) => l.target === '_blank' && l.rel.includes('noopener')),
+    credits.links.length > 0 &&
+      credits.links.every((l) => l.target === '_blank' && l.rel.includes('noopener')),
     JSON.stringify(credits.links)
   );
   // DONATE_URL đang rỗng nên không được có link ủng hộ nào lòi ra.
-  check('chưa cắm DONATE_URL thì không hiện nút ủng hộ', !credits.text.includes('coffee'), credits.text);
+  check(
+    'chưa cắm DONATE_URL thì không hiện nút ủng hộ',
+    !credits.text.includes('coffee'),
+    credits.text
+  );
 
   // Bấm đúng nút save và kiểm tới cùng: chrome.downloads.download() trả id ngay
   // khi nhận lệnh, nên nếu chỉ tin vào id thì file rỗng vẫn báo thành công.
@@ -257,16 +313,33 @@ try {
 
   const downloadState = await page.evaluate(async () => {
     const [item] = await chrome.downloads.search({ limit: 1, orderBy: ['-startTime'] });
-    return { state: item?.state, bytes: item?.bytesReceived, error: item?.error, path: item?.filename };
+    return {
+      state: item?.state,
+      bytes: item?.bytesReceived,
+      error: item?.error,
+      path: item?.filename,
+    };
   });
-  check('download chạy tới trạng thái complete', downloadState.state === 'complete', JSON.stringify(downloadState));
-  check('file có nội dung thật, không phải 0 byte', (downloadState.bytes ?? 0) > 0, JSON.stringify(downloadState));
+  check(
+    'download chạy tới trạng thái complete',
+    downloadState.state === 'complete',
+    JSON.stringify(downloadState)
+  );
+  check(
+    'file có nội dung thật, không phải 0 byte',
+    (downloadState.bytes ?? 0) > 0,
+    JSON.stringify(downloadState)
+  );
 
   if (downloadState.path && fs.existsSync(downloadState.path)) {
     const written = fs.readFileSync(downloadState.path, 'utf8');
     // Nút italic ở bước trên đã sửa "body" thành "_body_": file phải mang đúng
     // bản đã sửa, không phải bản gốc lúc capture.
-    check('file lưu đúng bản đã sửa tay, không phải bản gốc', written.includes('_body_'), written.slice(0, 200));
+    check(
+      'file lưu đúng bản đã sửa tay, không phải bản gốc',
+      written.includes('_body_'),
+      written.slice(0, 200)
+    );
     fs.rmSync(downloadState.path, { force: true });
   } else {
     check('file save từ editor có thật trên đĩa', false, String(downloadState.path));
@@ -274,9 +347,16 @@ try {
 
   // Tắt preview thì chuyển về một cột
   await editor.uncheck('#showPreview');
-  check('tắt preview thì chuyển sang một cột', await editor.evaluate(() => document.getElementById('panes').classList.contains('single')));
+  check(
+    'tắt preview thì chuyển sang một cột',
+    await editor.evaluate(() => document.getElementById('panes').classList.contains('single'))
+  );
 
-  check('service worker không ném lỗi nào suốt phiên', workerErrors.length === 0, workerErrors.join(' | '));
+  check(
+    'service worker không ném lỗi nào suốt phiên',
+    workerErrors.length === 0,
+    workerErrors.join(' | ')
+  );
 } finally {
   await context.close();
   fs.rmSync(profile, { recursive: true, force: true });

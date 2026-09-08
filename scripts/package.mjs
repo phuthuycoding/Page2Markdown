@@ -32,6 +32,8 @@ const listed = execFileSync('unzip', ['-Z1', zipPath], { encoding: 'utf8' })
   .split('\n')
   .filter(Boolean);
 
-console.log(`${path.relative(ROOT, zipPath)} — ${(fs.statSync(zipPath).size / 1024).toFixed(1)} KB`);
+console.log(
+  `${path.relative(ROOT, zipPath)} — ${(fs.statSync(zipPath).size / 1024).toFixed(1)} KB`
+);
 console.log(`${listed.length} file:`);
 for (const entry of listed) console.log(`  ${entry}`);

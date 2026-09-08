@@ -33,7 +33,11 @@ function buildStats(root: HTMLElement, markdown: string): CaptureStats {
 }
 
 /** Chọn nguồn HTML theo thứ tự: vùng bôi đen → Readability → thân trang. */
-function pickSource(options: ExtractOptions): { html: string; source: CaptureSource; article: Article } {
+function pickSource(options: ExtractOptions): {
+  html: string;
+  source: CaptureSource;
+  article: Article;
+} {
   const selection = getSelectionHtml();
   if (selection) return { html: selection, source: 'selection', article: null };
 

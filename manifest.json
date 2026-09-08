@@ -4,13 +4,7 @@
   "version": "0.1.0",
   "description": "Save the current page — or just your selection — as clean Markdown with YAML frontmatter.",
   "minimum_chrome_version": "116",
-  "permissions": [
-    "activeTab",
-    "scripting",
-    "downloads",
-    "storage",
-    "contextMenus"
-  ],
+  "permissions": ["activeTab", "scripting", "downloads", "storage", "contextMenus"],
   "action": {
     "default_title": "Save Page To Markdown",
     "default_icon": {

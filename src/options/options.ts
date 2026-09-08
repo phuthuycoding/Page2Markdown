@@ -62,7 +62,9 @@ function flashStatus(text = 'Saved'): void {
 
 async function persistFrontmatterFields(): Promise<void> {
   const checked = new Set(
-    Array.from(fieldsEl.querySelectorAll<HTMLInputElement>('input:checked')).map((node) => node.value)
+    Array.from(fieldsEl.querySelectorAll<HTMLInputElement>('input:checked')).map(
+      (node) => node.value
+    )
   );
   // Lọc theo FRONTMATTER_FIELDS để thứ tự các dòng không đảo giữa các lần lưu.
   const ordered = FRONTMATTER_FIELDS.filter((field) => checked.has(field));
@@ -116,19 +118,27 @@ function bindAutoSave(): void {
   // Mỗi select ánh xạ sang đúng một union type, nên ép kiểu tại chỗ thay vì
   // dùng một hàm chung mất kiểu.
   select('contentMode').addEventListener('change', async (event) => {
-    await settingsService.patch({ contentMode: (event.target as HTMLSelectElement).value as ContentMode });
+    await settingsService.patch({
+      contentMode: (event.target as HTMLSelectElement).value as ContentMode,
+    });
     flashStatus();
   });
   select('imageMode').addEventListener('change', async (event) => {
-    await settingsService.patch({ imageMode: (event.target as HTMLSelectElement).value as ImageMode });
+    await settingsService.patch({
+      imageMode: (event.target as HTMLSelectElement).value as ImageMode,
+    });
     flashStatus();
   });
   select('headingStyle').addEventListener('change', async (event) => {
-    await settingsService.patch({ headingStyle: (event.target as HTMLSelectElement).value as HeadingStyle });
+    await settingsService.patch({
+      headingStyle: (event.target as HTMLSelectElement).value as HeadingStyle,
+    });
     flashStatus();
   });
   select('bulletMarker').addEventListener('change', async (event) => {
-    await settingsService.patch({ bulletMarker: (event.target as HTMLSelectElement).value as BulletMarker });
+    await settingsService.patch({
+      bulletMarker: (event.target as HTMLSelectElement).value as BulletMarker,
+    });
     flashStatus();
   });
   select('codeBlockStyle').addEventListener('change', async (event) => {
@@ -165,7 +175,10 @@ function externalLink(href: string, text: string, className?: string): HTMLAncho
 
 function renderCredits(): void {
   const container = document.getElementById('credits') as HTMLElement;
-  const parts: Node[] = [document.createTextNode('Made by '), externalLink(AUTHOR_URL, AUTHOR_NAME)];
+  const parts: Node[] = [
+    document.createTextNode('Made by '),
+    externalLink(AUTHOR_URL, AUTHOR_NAME),
+  ];
 
   if (REPO_URL) parts.push(externalLink(REPO_URL, '★ Star on GitHub', 'star'));
   if (DONATE_URL) parts.push(externalLink(DONATE_URL, `☕ ${DONATE_LABEL}`));

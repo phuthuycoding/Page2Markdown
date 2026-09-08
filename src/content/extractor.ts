@@ -19,7 +19,11 @@ if (!window.__P2M_LISTENER_READY__) {
   window.__P2M_LISTENER_READY__ = true;
 
   chrome.runtime.onMessage.addListener(
-    (message: ContentMessage, _sender, sendResponse: (response: ExtractResponse | true) => void) => {
+    (
+      message: ContentMessage,
+      _sender,
+      sendResponse: (response: ExtractResponse | true) => void
+    ) => {
       if (message.type === MessageType.PING) {
         sendResponse(true);
         return false;

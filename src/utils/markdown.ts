@@ -66,5 +66,7 @@ export function composeDocument(
   const heading =
     settings.includeTitleHeading && payload.meta.title ? `# ${payload.meta.title}\n\n` : '';
 
-  return buildFrontmatter(payload.meta, settings, capturedAt) + heading + payload.markdown.trim() + '\n';
+  return (
+    buildFrontmatter(payload.meta, settings, capturedAt) + heading + payload.markdown.trim() + '\n'
+  );
 }

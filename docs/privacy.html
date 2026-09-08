@@ -4,33 +4,81 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Privacy Policy — Page2Markdown</title>
-    <meta name="description" content="Page2Markdown collects no data. No server, no account, no analytics, no tracking." />
+    <meta
+      name="description"
+      content="Page2Markdown collects no data. No server, no account, no analytics, no tracking."
+    />
     <link rel="canonical" href="https://phuthuycoding.github.io/Page2Markdown/privacy.html" />
     <link rel="icon" href="img/icon128.png" />
     <style>
-      :root { color-scheme: light dark; }
+      :root {
+        color-scheme: light dark;
+      }
       body {
         max-width: 680px;
         margin: 0 auto;
         padding: 48px 24px 96px;
-        font: 16px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        font:
+          16px/1.65 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          system-ui,
+          sans-serif;
         color: #22242e;
         background: #fff;
       }
       @media (prefers-color-scheme: dark) {
-        body { color: #eceef5; background: #16181d; }
-        td, th { border-color: #2d323c !important; }
+        body {
+          color: #eceef5;
+          background: #16181d;
+        }
+        td,
+        th {
+          border-color: #2d323c !important;
+        }
       }
-      h1 { font-size: 28px; margin: 0 0 4px; }
-      h2 { font-size: 18px; margin: 34px 0 10px; }
-      .updated { color: #6b7186; margin: 0 0 28px; }
-      table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
-      th, td { border: 1px solid #e1e4ed; padding: 8px 12px; text-align: left; vertical-align: top; }
-      th { font-weight: 600; }
-      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
-      a { color: #6d3fe8; }
-      .back { margin-bottom: 24px; font-size: 15px; }
-      .back a { text-decoration: none; }
+      h1 {
+        font-size: 28px;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 34px 0 10px;
+      }
+      .updated {
+        color: #6b7186;
+        margin: 0 0 28px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12px 0;
+        font-size: 15px;
+      }
+      th,
+      td {
+        border: 1px solid #e1e4ed;
+        padding: 8px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-weight: 600;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 14px;
+      }
+      a {
+        color: #6d3fe8;
+      }
+      .back {
+        margin-bottom: 24px;
+        font-size: 15px;
+      }
+      .back a {
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -47,10 +95,10 @@
 
     <h2>What the extension reads</h2>
     <p>
-      When you click the toolbar icon, press the keyboard shortcut, or use the right-click menu,
-      the extension reads the content of the page you are currently viewing so it can convert that
-      page to Markdown. It reads that page at that moment only. It does not run in the background,
-      does not watch your browsing, and has no access to any other tab.
+      When you click the toolbar icon, press the keyboard shortcut, or use the right-click menu, the
+      extension reads the content of the page you are currently viewing so it can convert that page
+      to Markdown. It reads that page at that moment only. It does not run in the background, does
+      not watch your browsing, and has no access to any other tab.
     </p>
 
     <h2>Where the content goes</h2>
@@ -74,21 +122,37 @@
 
     <h2>Permissions and why they exist</h2>
     <table>
-      <tr><th>Permission</th><th>Why it is needed</th></tr>
+      <tr>
+        <th>Permission</th>
+        <th>Why it is needed</th>
+      </tr>
       <tr>
         <td><code>activeTab</code></td>
-        <td>Read the current page when you ask for it. Deliberately chosen over broad host permissions so the extension has no standing access to any website.</td>
+        <td>
+          Read the current page when you ask for it. Deliberately chosen over broad host permissions
+          so the extension has no standing access to any website.
+        </td>
       </tr>
       <tr>
         <td><code>scripting</code></td>
         <td>Run the conversion code inside that tab.</td>
       </tr>
-      <tr><td><code>downloads</code></td><td>Save the Markdown file to your Downloads folder.</td></tr>
+      <tr>
+        <td><code>downloads</code></td>
+        <td>Save the Markdown file to your Downloads folder.</td>
+      </tr>
       <tr>
         <td><code>storage</code></td>
-        <td>Remember your settings, and hold the converted text for the moment between capturing a page and the editor tab opening. That draft is deleted the moment you save, and after 24 hours in any case.</td>
+        <td>
+          Remember your settings, and hold the converted text for the moment between capturing a
+          page and the editor tab opening. That draft is deleted the moment you save, and after 24
+          hours in any case.
+        </td>
       </tr>
-      <tr><td><code>contextMenus</code></td><td>Add the right-click menu entries.</td></tr>
+      <tr>
+        <td><code>contextMenus</code></td>
+        <td>Add the right-click menu entries.</td>
+      </tr>
     </table>
 
     <h2>Third parties</h2>

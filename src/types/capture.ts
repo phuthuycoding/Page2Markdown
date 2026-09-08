@@ -25,9 +25,7 @@ export interface CapturePayload {
   stats: CaptureStats;
 }
 
-export type ExtractResponse =
-  | { ok: true; payload: CapturePayload }
-  | { ok: false; error: string };
+export type ExtractResponse = { ok: true; payload: CapturePayload } | { ok: false; error: string };
 
 export interface DownloadResult {
   downloadId: number;

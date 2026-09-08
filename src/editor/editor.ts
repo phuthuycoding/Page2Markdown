@@ -140,7 +140,9 @@ function renderCredits(): void {
 }
 
 function bindToolbar(): void {
-  for (const button of document.querySelectorAll<HTMLButtonElement>('.toolbar button[data-command]')) {
+  for (const button of document.querySelectorAll<HTMLButtonElement>(
+    '.toolbar button[data-command]'
+  )) {
     button.addEventListener('click', () => runCommand(button.dataset.command as CommandName));
   }
 

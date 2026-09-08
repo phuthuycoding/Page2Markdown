@@ -31,7 +31,11 @@ function payload(markdown: string): CapturePayload {
 
 describe('buildFrontmatter — YAML không được vỡ vì tiêu đề', () => {
   it('quote và escape dấu nháy kép, giữ nguyên dấu hai chấm', () => {
-    const yaml = buildFrontmatter(META, settingsWith({ frontmatterFields: ['title'] }), CAPTURED_AT);
+    const yaml = buildFrontmatter(
+      META,
+      settingsWith({ frontmatterFields: ['title'] }),
+      CAPTURED_AT
+    );
     expect(yaml).toBe('---\ntitle: "Tiêu đề: có \\"dấu nháy\\" và dấu hai chấm"\n---\n\n');
   });
 
@@ -70,13 +74,19 @@ describe('buildFrontmatter — YAML không được vỡ vì tiêu đề', () =>
   });
 
   it('tắt frontmatter thì không sinh gì', () => {
-    expect(buildFrontmatter(META, settingsWith({ includeFrontmatter: false }), CAPTURED_AT)).toBe('');
+    expect(buildFrontmatter(META, settingsWith({ includeFrontmatter: false }), CAPTURED_AT)).toBe(
+      ''
+    );
   });
 
   it('chọn toàn trường rỗng thì không để lại khối "---" trống', () => {
     const empty: PageMeta = { ...META, author: '', excerpt: '' };
     expect(
-      buildFrontmatter(empty, settingsWith({ frontmatterFields: ['author', 'description'] }), CAPTURED_AT)
+      buildFrontmatter(
+        empty,
+        settingsWith({ frontmatterFields: ['author', 'description'] }),
+        CAPTURED_AT
+      )
     ).toBe('');
   });
 });

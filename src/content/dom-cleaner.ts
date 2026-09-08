@@ -1,9 +1,4 @@
-import {
-  CODE_LANG_ATTR,
-  LAYOUT_NOISE_SELECTOR,
-  LAZY_IMAGE_ATTRS,
-  NOISE_SELECTOR,
-} from '../config';
+import { CODE_LANG_ATTR, LAYOUT_NOISE_SELECTOR, LAZY_IMAGE_ATTRS, NOISE_SELECTOR } from '../config';
 import type { ExtractOptions } from '../types/settings';
 
 /** Ảnh lazy-load hay đặt một GIF trong suốt ở src rồi mới nạp ảnh thật sau. */

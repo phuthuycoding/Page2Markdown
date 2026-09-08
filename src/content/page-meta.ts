@@ -16,8 +16,7 @@ export function readPageMeta(): PageMeta {
   return {
     url: location.href,
     domain: location.hostname,
-    title:
-      metaContent('meta[property="og:title"]', 'meta[name="twitter:title"]') || document.title,
+    title: metaContent('meta[property="og:title"]', 'meta[name="twitter:title"]') || document.title,
     author: metaContent(
       'meta[name="author"]',
       'meta[property="article:author"]',
