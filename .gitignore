@@ -1,0 +1,7 @@
+node_modules
+dist
+*.zip
+store/*.zip
+
+# rác do Playwright MCP sinh ra
+.playwright-mcp/

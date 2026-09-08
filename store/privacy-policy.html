@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page2Markdown — Privacy Policy</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 48px 24px 96px;
+        font: 16px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        color: #22242e;
+        background: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        body { color: #eceef5; background: #16181d; }
+        td, th { border-color: #2d323c !important; }
+      }
+      h1 { font-size: 28px; margin: 0 0 4px; }
+      h2 { font-size: 18px; margin: 34px 0 10px; }
+      .updated { color: #6b7186; margin: 0 0 28px; }
+      table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
+      th, td { border: 1px solid #e1e4ed; padding: 8px 12px; text-align: left; vertical-align: top; }
+      th { font-weight: 600; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>Page2Markdown — Privacy Policy</h1>
+    <p class="updated">Last updated: 8 September 2026</p>
+
+    <h2>The short version</h2>
+    <p>
+      Page2Markdown does not collect, transmit, or store your personal data. It has no server, no
+      account, and no analytics. Everything it does happens inside your own browser, and the files
+      it produces are written straight to your computer.
+    </p>
+
+    <h2>What the extension reads</h2>
+    <p>
+      When you click the toolbar icon, press the keyboard shortcut, or use the right-click menu,
+      the extension reads the content of the page you are currently viewing so it can convert that
+      page to Markdown. It reads that page at that moment only. It does not run in the background,
+      does not watch your browsing, and has no access to any other tab.
+    </p>
+
+    <h2>Where the content goes</h2>
+    <p>
+      The converted Markdown goes to exactly one of two places, both chosen by you: a file in your
+      Downloads folder, or your clipboard. It is never sent anywhere else. The extension makes no
+      network requests of its own.
+    </p>
+
+    <h2>What is stored</h2>
+    <p>
+      Your settings — which frontmatter fields to include, the filename template, image handling,
+      and Markdown style — are saved through Chrome's <code>storage.sync</code> API, so they follow
+      your Chrome profile.
+    </p>
+    <p>
+      The converted text of a page you capture is held briefly in local storage so the editor tab
+      can pick it up, then deleted as soon as you save it — and automatically after 24 hours if you
+      never do. It stays on your machine the whole time. No browsing history is ever stored.
+    </p>
+
+    <h2>Permissions and why they exist</h2>
+    <table>
+      <tr><th>Permission</th><th>Why it is needed</th></tr>
+      <tr>
+        <td><code>activeTab</code></td>
+        <td>Read the current page when you ask for it. Deliberately chosen over broad host permissions so the extension has no standing access to any website.</td>
+      </tr>
+      <tr>
+        <td><code>scripting</code></td>
+        <td>Run the conversion code inside that tab.</td>
+      </tr>
+      <tr><td><code>downloads</code></td><td>Save the Markdown file to your Downloads folder.</td></tr>
+      <tr>
+        <td><code>storage</code></td>
+        <td>Remember your settings, and hold the converted text for the moment between capturing a page and the editor tab opening. That draft is deleted the moment you save, and after 24 hours in any case.</td>
+      </tr>
+      <tr><td><code>contextMenus</code></td><td>Add the right-click menu entries.</td></tr>
+    </table>
+
+    <h2>Third parties</h2>
+    <p>
+      No third-party code runs inside this extension. There are no trackers, no analytics, and no
+      advertising. All code ships inside the package; nothing is downloaded or executed at runtime.
+    </p>
+    <p>
+      The extension may show a "buy me a coffee" link. It is an ordinary link that opens a page in
+      a new tab; no payment is handled inside the extension, and nothing about you is sent anywhere
+      unless you choose to follow that link and pay on that site under its own terms.
+    </p>
+
+    <h2>Children</h2>
+    <p>The extension collects no data from anyone, including children.</p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy ever changes, the updated version will be published at this address with a new
+      date at the top.
+    </p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy: <!-- TODO: điền email liên hệ đã xác minh trong tài khoản developer --></p>
+  </body>
+</html>

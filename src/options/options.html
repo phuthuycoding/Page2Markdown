@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./options.css" />
+    <title>Page2Markdown Settings</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="head">
+        <img src="/icons/icon128.png" alt="" width="44" height="44" />
+        <div>
+          <h1>Page2Markdown</h1>
+          <p class="lead">Defaults applied every time you save a page.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Content</h2>
+        <label class="row">
+          <span>Scope</span>
+          <select id="contentMode">
+            <option value="article">Article only (strips menus and ads)</option>
+            <option value="full">Whole page (keeps more, noisier)</option>
+          </select>
+        </label>
+        <label class="row">
+          <span>Images</span>
+          <select id="imageMode">
+            <option value="keep">Keep images (absolute URLs)</option>
+            <option value="alt">Alt text only</option>
+            <option value="strip">Remove images</option>
+          </select>
+        </label>
+        <label class="row check">
+          <input id="includeLinks" type="checkbox" />
+          <span>Keep hyperlinks (uncheck to keep the text only)</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Frontmatter</h2>
+        <label class="row check">
+          <input id="includeFrontmatter" type="checkbox" />
+          <span>Add a YAML frontmatter block at the top of the file</span>
+        </label>
+        <label class="row check">
+          <input id="includeTitleHeading" type="checkbox" />
+          <span>Add the title as an <code>#</code> heading above the content</span>
+        </label>
+        <div class="row">
+          <span>Fields</span>
+          <div id="frontmatterFields" class="chips"></div>
+        </div>
+        <label class="row">
+          <span>Default tags</span>
+          <input id="defaultTags" type="text" placeholder="clipping, research" />
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>File</h2>
+        <label class="row">
+          <span>Filename template</span>
+          <input id="filenameTemplate" type="text" spellcheck="false" />
+        </label>
+        <p class="hint">
+          Tokens: <code>{title}</code> <code>{slug}</code> <code>{domain}</code>
+          <code>{date}</code> <code>{time}</code> <code>{timestamp}</code>. A
+          <code>/</code> creates a subfolder.
+        </p>
+        <label class="row">
+          <span>Folder in Downloads</span>
+          <input id="downloadFolder" type="text" placeholder="Page2Markdown" />
+        </label>
+        <label class="row check">
+          <input id="askLocation" type="checkbox" />
+          <span>Ask where to save every time</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Markdown style</h2>
+        <label class="row">
+          <span>Headings</span>
+          <select id="headingStyle">
+            <option value="atx"># Heading (ATX)</option>
+            <option value="setext">Underlined (Setext)</option>
+          </select>
+        </label>
+        <label class="row">
+          <span>Bullets</span>
+          <select id="bulletMarker">
+            <option value="-">- dash</option>
+            <option value="*">* asterisk</option>
+            <option value="+">+ plus</option>
+          </select>
+        </label>
+        <label class="row">
+          <span>Code blocks</span>
+          <select id="codeBlockStyle">
+            <option value="fenced">Fenced (```)</option>
+            <option value="indented">Indented 4 spaces</option>
+          </select>
+        </label>
+      </section>
+
+      <footer class="actions">
+        <button id="reset" class="btn ghost" type="button">Reset to defaults</button>
+        <span id="status" class="status"></span>
+        <a id="donate" class="donate hidden" target="_blank" rel="noopener noreferrer"></a>
+      </footer>
+    </div>
+
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

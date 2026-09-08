@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./editor.css" />
+    <title>Page2Markdown</title>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="brand">
+        <img src="/icons/icon32.png" alt="" width="20" height="20" />
+        <strong>Page2Markdown</strong>
+      </div>
+      <div class="bar-right">
+        <span id="sourceBadge" class="badge"></span>
+        <span id="stats" class="stats"></span>
+        <button id="openOptions" class="icon-btn" type="button" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <section id="stateLoading" class="state">
+      <div class="spinner"></div>
+      <p>Reading page content…</p>
+    </section>
+
+    <section id="stateError" class="state hidden">
+      <p class="error-title">Can't capture this page</p>
+      <p id="errorMessage" class="error-message"></p>
+    </section>
+
+    <main id="stateReady" class="hidden">
+      <div class="meta">
+        <input id="title" type="text" spellcheck="false" aria-label="Title" />
+        <div class="meta-controls">
+          <select id="contentMode" title="Content scope">
+            <option value="article">Article only</option>
+            <option value="full">Whole page</option>
+          </select>
+          <select id="imageMode" title="Image handling">
+            <option value="keep">Keep images</option>
+            <option value="alt">Alt text only</option>
+            <option value="strip">No images</option>
+          </select>
+          <label class="check">
+            <input id="frontmatter" type="checkbox" />
+            <span>Frontmatter</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="toolbar" role="toolbar" aria-label="Formatting">
+        <button data-command="bold" type="button" title="Bold (Ctrl+B)"><b>B</b></button>
+        <button data-command="italic" type="button" title="Italic (Ctrl+I)"><i>I</i></button>
+        <button data-command="strikethrough" type="button" title="Strikethrough"><s>S</s></button>
+        <span class="sep"></span>
+        <button data-command="heading" type="button" title="Heading">H2</button>
+        <button data-command="quote" type="button" title="Quote">❝</button>
+        <button data-command="bulletList" type="button" title="Bullet list">• —</button>
+        <button data-command="orderedList" type="button" title="Numbered list">1. —</button>
+        <span class="sep"></span>
+        <button data-command="link" type="button" title="Link (Ctrl+K)">🔗</button>
+        <button data-command="code" type="button" title="Inline code">&lt;/&gt;</button>
+        <button data-command="codeBlock" type="button" title="Code block">▤</button>
+        <span class="grow"></span>
+        <label class="check">
+          <input id="showPreview" type="checkbox" checked />
+          <span>Preview</span>
+        </label>
+      </div>
+
+      <div id="panes" class="panes">
+        <textarea id="markdown" spellcheck="false" aria-label="Markdown"></textarea>
+        <!-- sandbox rỗng: preview không chạy được script nào, kể cả HTML thô lọt
+             ra từ trang gốc, nên trang extension không bị XSS. -->
+        <iframe id="preview" sandbox title="Preview"></iframe>
+      </div>
+
+      <footer class="actions">
+        <div class="filename">
+          <span class="label">Save as</span>
+          <code id="filename"></code>
+        </div>
+        <div class="buttons">
+          <button id="copy" class="btn ghost" type="button">Copy</button>
+          <button id="download" class="btn primary" type="button">Save Page To Markdown</button>
+        </div>
+      </footer>
+
+      <a id="donate" class="donate hidden" target="_blank" rel="noopener noreferrer"></a>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script type="module" src="./editor.ts"></script>
+  </body>
+</html>
