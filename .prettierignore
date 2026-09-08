@@ -1,0 +1,10 @@
+dist
+node_modules
+store
+bun.lock
+
+# Cấu hình MCP của máy, không thuộc dự án
+.mcp.json
+# Ảnh và tài sản nhị phân
+*.png
+*.zip

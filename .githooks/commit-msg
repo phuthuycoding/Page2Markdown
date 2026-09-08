@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Bắt buộc Conventional Commits: <type>(<scope>)!: <mô tả>
+#
+# Lý do không chỉ là hình thức — tiền tố quyết định phiên bản kế tiếp (fix → patch,
+# feat → minor, "!" hoặc BREAKING CHANGE → major) và là thứ sinh ra CHANGELOG.
+#
+# Bỏ qua khi cần: git commit --no-verify
+set -e
+
+msg_file=$1
+# Bỏ dòng comment của git và dòng trống ở đầu để lấy đúng dòng tiêu đề.
+subject=$(grep -v '^#' "$msg_file" | sed '/^[[:space:]]*$/d' | head -n 1)
+
+# Merge, revert và fixup do git tự sinh — không áp quy tắc lên chúng.
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup!"*|"squash!"*) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+pattern="^($types)(\([a-z0-9._/-]+\))?!?: .+"
+
+if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+  cat >&2 <<EOF
+
+  ✗ Thông điệp commit không theo Conventional Commits.
+
+    Nhận được: $subject
+
+    Dạng đúng: <type>(<scope tuỳ chọn>): <mô tả>
+    Type hợp lệ: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+
+    Ví dụ:
+      feat(editor): add word count to the toolbar
+      fix(download): wait for the download to finish before reporting success
+      docs: explain why capture happens in the service worker
+      feat(api)!: drop support for Chrome 115
+
+    Thêm "!" sau type/scope cho thay đổi phá vỡ tương thích.
+
+EOF
+  exit 1
+fi
+
+# Dòng tiêu đề dài quá thì GitHub và "git log --oneline" đều cắt mất đuôi.
+if [ ${#subject} -gt 72 ]; then
+  printf '\n  ✗ Dòng tiêu đề dài %d ký tự, tối đa 72.\n\n    %s\n\n' "${#subject}" "$subject" >&2
+  exit 1
+fi

@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Định dạng và soi những file đang được commit — chỉ những file đó, không phải
+# cả repo, để hook chạy trong một hai giây thay vì vài chục.
+#
+# Bỏ qua khi cần: git commit --no-verify
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$staged" ] && exit 0
+
+formattable=$(printf '%s\n' "$staged" | grep -E '\.(ts|js|mjs|json|css|html|md)$' || true)
+lintable=$(printf '%s\n' "$staged" | grep -E '^src/.*\.ts$' || true)
+
+if [ -n "$formattable" ]; then
+  echo "→ prettier"
+  # shellcheck disable=SC2086
+  bunx prettier --write --ignore-unknown $formattable
+  # Prettier vừa sửa file thì phải đưa bản đã sửa vào chính commit này,
+  # nếu không thay đổi sẽ rơi lại vào working tree và commit vẫn lệch chuẩn.
+  # shellcheck disable=SC2086
+  git add $formattable
+fi
+
+if [ -n "$lintable" ]; then
+  echo "→ eslint"
+  # shellcheck disable=SC2086
+  bunx eslint $lintable
+fi
+
+# Typecheck chạy trên cả dự án: sửa một file có thể làm hỏng kiểu ở file khác,
+# mà file đó lại không nằm trong danh sách đang commit.
+echo "→ typecheck"
+bun run typecheck
