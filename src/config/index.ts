@@ -7,10 +7,10 @@ export const LAST_WELCOME_VERSION_KEY = 'p2m_last_welcome_version';
 
 /**
  * Trang chào mừng nằm trên web của mình chứ không phải trang extension: nội dung
- * và quảng cáo ở đó sửa được bất cứ lúc nào, không phải build lại rồi chờ Google
- * duyệt. Để rỗng thì extension không mở tab nào cả.
+ * ở đó sửa được bất cứ lúc nào, không phải build lại rồi chờ Google duyệt.
+ * Để rỗng thì extension không mở tab nào cả.
  */
-export const WELCOME_URL = '';
+export const WELCOME_URL = 'https://phuthuycoding.github.io/Page2Markdown/';
 
 /** Chỉ mở lại welcome khi lên minor/major — patch thì im lặng cho đỡ phiền. */
 export function shouldWelcome(previous: string | undefined, current: string): boolean {
@@ -24,11 +24,7 @@ export function shouldWelcome(previous: string | undefined, current: string): bo
 export const AUTHOR_NAME = 'phuthuycoding';
 export const AUTHOR_URL = 'https://github.com/phuthuycoding';
 
-/**
- * Repo công khai. LƯU Ý: repo đang để private cho tới khi extension lên store —
- * bật link này ra bản phát hành trước khi chuyển repo sang public thì người
- * dùng bấm vào chỉ nhận 404.
- */
+/** Repo công khai — dòng credit ở chân editor trỏ vào đây. */
 export const REPO_URL = 'https://github.com/phuthuycoding/Page2Markdown';
 
 /**

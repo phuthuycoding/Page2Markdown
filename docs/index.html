@@ -10,6 +10,7 @@
     />
     <link rel="icon" href="img/icon128.png" />
     <link rel="canonical" href="https://phuthuycoding.github.io/Page2Markdown/" />
+    <link rel="stylesheet" href="style.css" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Page2Markdown — save any web page as clean Markdown" />
@@ -19,233 +20,175 @@
     />
     <meta property="og:image" content="https://phuthuycoding.github.io/Page2Markdown/img/editor.png" />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #ffffff;
-        --surface: #f5f6fa;
-        --border: #e1e4ed;
-        --text: #22242e;
-        --muted: #5d6478;
-        --accent: #6d3fe8;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #191b22;
-          --surface: #22242e;
-          --border: #343947;
-          --text: #eceef5;
-          --muted: #a2a9bf;
-          --accent: #8b6bf0;
-        }
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-      }
-      body {
-        font: 17px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
-      .wrap {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-      header {
-        text-align: center;
-        padding: 72px 24px 44px;
-        background: linear-gradient(160deg, rgba(109, 63, 232, 0.07), transparent 70%);
-      }
-      header img {
-        width: 132px;
-        height: 132px;
-      }
-      h1 {
-        font-size: clamp(34px, 6vw, 50px);
-        letter-spacing: -0.025em;
-        line-height: 1.08;
-        margin: 18px 0 14px;
-      }
-      .tagline {
-        font-size: 20px;
-        color: var(--muted);
-        max-width: 620px;
-        margin: 0 auto;
-      }
-      .cta {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 32px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 13px 26px;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-        border: 1px solid var(--border);
-        color: var(--text);
-        background: var(--surface);
-      }
-      .btn.primary {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-      }
-      .btn:hover {
-        opacity: 0.9;
-      }
-      .shot {
-        width: 100%;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        margin: 48px 0;
-        display: block;
-      }
-      h2 {
-        font-size: 26px;
-        letter-spacing: -0.015em;
-        margin: 56px 0 18px;
-      }
-      h3 {
-        font-size: 18px;
-        margin: 0 0 6px;
-      }
-      p {
-        color: var(--muted);
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px 22px;
-      }
-      .card p {
-        font-size: 15px;
-        margin-top: 4px;
-      }
-      ol {
-        color: var(--muted);
-        padding-left: 22px;
-      }
-      ol li {
-        margin-bottom: 10px;
-      }
-      kbd {
-        font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 5px;
-        padding: 2px 7px;
-        color: var(--text);
-      }
-      footer {
-        margin: 80px 0 60px;
-        padding-top: 28px;
-        border-top: 1px solid var(--border);
-        font-size: 15px;
-        color: var(--muted);
-        text-align: center;
-      }
-      footer a {
-        color: var(--muted);
-      }
-      a {
-        color: var(--accent);
-      }
-    </style>
   </head>
   <body>
-    <header>
-      <img src="img/logo.png" alt="Page2Markdown logo" width="132" height="132" />
-      <h1>Save any web page as clean Markdown</h1>
-      <p class="tagline">
-        A Chrome extension that turns the page you are reading — or just the part you highlighted —
-        into a Markdown file with YAML frontmatter, ready for Obsidian.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="https://github.com/phuthuycoding/Page2Markdown">View on GitHub</a>
-        <a class="btn" href="https://github.com/phuthuycoding/Page2Markdown#install">Install</a>
+    <nav class="nav">
+      <a class="nav-brand" href="./">
+        <img src="img/icon128.png" alt="" width="26" height="26" />
+        <span>Page2Markdown</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a class="btn btn-sm" href="https://github.com/phuthuycoding/Page2Markdown">GitHub</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Chrome extension · Manifest V3 · MIT</p>
+        <h1>Save any web page as <span class="grad">clean Markdown</span></h1>
+        <p class="lede">
+          A web clipper that strips the navigation, ads, and sidebars — then hands you the article
+          with YAML frontmatter, ready to drop into Obsidian.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/phuthuycoding/Page2Markdown#install">
+            Install it
+          </a>
+          <a class="btn" href="https://github.com/phuthuycoding/Page2Markdown">★ Star on GitHub</a>
+        </div>
+        <p class="note">No server. No account. Nothing you capture leaves your computer.</p>
+      </div>
+
+      <div class="hero-demo">
+        <div class="window" aria-hidden="true">
+          <div class="window-bar">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="window-name">article.md</span>
+          </div>
+          <pre class="window-body"><code id="typed"></code><span class="caret" id="caret"></span></pre>
+        </div>
       </div>
     </header>
 
-    <main class="wrap">
-      <img class="shot" src="img/editor.png" alt="The Page2Markdown editor with Markdown source and live preview" />
+    <main>
+      <section class="band" id="features">
+        <div class="wrap">
+          <h2>Built to keep what matters</h2>
+          <p class="section-lede">
+            Most clippers hand you a wall of text. This one keeps the structure that makes a note
+            worth reading later.
+          </p>
 
-      <h2>What it does</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Readable output</h3>
-          <p>Navigation, ads, and sidebars stripped by Mozilla Readability. You keep the article, not the furniture.</p>
+          <div class="grid">
+            <article class="card">
+              <div class="icon">◨</div>
+              <h3>The article, not the furniture</h3>
+              <p>Navigation, ads, and sidebars removed by Mozilla Readability before anything is converted.</p>
+            </article>
+            <article class="card">
+              <div class="icon">⌗</div>
+              <h3>Frontmatter for your vault</h3>
+              <p>Title, source URL, author, publication date, capture time, tags — pick which fields appear.</p>
+            </article>
+            <article class="card">
+              <div class="icon">‹›</div>
+              <h3>Code keeps its language</h3>
+              <p>Fenced blocks stay fenced and keep their language tag, so highlighting still works in your editor.</p>
+            </article>
+            <article class="card">
+              <div class="icon">▦</div>
+              <h3>Tables and lists survive</h3>
+              <p>GFM tables, nested lists indented to the width CommonMark actually requires, image captions.</p>
+            </article>
+            <article class="card">
+              <div class="icon">✎</div>
+              <h3>An editor, not a popup</h3>
+              <p>Formatting toolbar and live preview in a full tab, so you fix things before the file hits disk.</p>
+            </article>
+            <article class="card">
+              <div class="icon">⛨</div>
+              <h3>Reads only when asked</h3>
+              <p>It requests <code>activeTab</code> alone — no standing access to any site, nothing running in the background.</p>
+            </article>
+          </div>
         </div>
-        <div class="card">
-          <h3>Frontmatter for your vault</h3>
-          <p>Title, source URL, author, publication date, capture time, tags — pick exactly which fields appear.</p>
-        </div>
-        <div class="card">
-          <h3>Markdown that survives</h3>
-          <p>GFM tables, code blocks that keep their language, nested lists at the right indent, absolute URLs.</p>
-        </div>
-        <div class="card">
-          <h3>An editor, not a popup</h3>
-          <p>Formatting toolbar and live preview, so you fix things before the file lands on disk.</p>
-        </div>
-        <div class="card">
-          <h3>Only when you ask</h3>
-          <p>It asks for <code>activeTab</code> alone, so it can read nothing until you click, and costs nothing on pages you never save.</p>
-        </div>
-        <div class="card">
-          <h3>Nothing leaves your machine</h3>
-          <p>No server, no account, no analytics, no tracking. <a href="privacy.html">Privacy policy</a>.</p>
-        </div>
-      </div>
+      </section>
 
-      <h2>How to use it</h2>
-      <ol>
-        <li>Open the page you want to keep.</li>
-        <li>
-          Click the toolbar icon, press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>
-          (<kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>M</kbd> on Mac), or right-click and choose
-          <strong>Save Page To Markdown</strong>. Highlight a passage first and only that part is captured.
-        </li>
-        <li>The editor opens in a new tab. Fix the title, trim anything you don't want.</li>
-        <li>Hit <strong>Save Page To Markdown</strong> — or Copy, if it is going straight into a note.</li>
-      </ol>
+      <section class="band alt" id="how">
+        <div class="wrap">
+          <h2>Three ways in, one destination</h2>
+          <div class="steps">
+            <div class="step">
+              <span class="num">1</span>
+              <h3>Ask for it</h3>
+              <p>
+                Click the toolbar icon, press <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>M</kbd>, or
+                right-click and choose <strong>Save Page To Markdown</strong>. Highlight a passage
+                first and only that part is taken.
+              </p>
+            </div>
+            <div class="step">
+              <span class="num">2</span>
+              <h3>Edit it</h3>
+              <p>
+                The editor opens in a tab beside the page. Fix the title, trim what you don't want,
+                watch the preview update as you type.
+              </p>
+            </div>
+            <div class="step">
+              <span class="num">3</span>
+              <h3>Keep it</h3>
+              <p>
+                Save the file — filename templates and destination folder are yours to set — or copy
+                it straight into a note.
+              </p>
+            </div>
+          </div>
 
-      <img class="shot" src="img/settings.png" alt="Page2Markdown settings page" />
+          <img class="shot" src="img/editor.png" alt="The Page2Markdown editor showing Markdown source beside a live preview" loading="lazy" />
+        </div>
+      </section>
 
-      <h2>Make it yours</h2>
-      <p>
-        Filename templates with <code>{title}</code> <code>{slug}</code> <code>{domain}</code>
-        <code>{date}</code> — a <code>/</code> creates a subfolder. Choose how images are handled,
-        which frontmatter fields appear, heading style, bullet marker, and fenced or indented code
-        blocks.
-      </p>
+      <section class="band">
+        <div class="wrap split">
+          <div>
+            <h2>Yours to configure</h2>
+            <p class="section-lede">
+              Set it once and every capture follows. Filename templates take
+              <code>{title}</code> <code>{slug}</code> <code>{domain}</code> <code>{date}</code>
+              — a <code>/</code> creates a subfolder.
+            </p>
+            <ul class="ticks">
+              <li>Article-only or whole-page scope</li>
+              <li>Keep images, keep only alt text, or drop them</li>
+              <li>Choose every frontmatter field, add default tags</li>
+              <li>ATX or Setext headings, bullet marker, fenced or indented code</li>
+            </ul>
+          </div>
+          <img class="shot" src="img/settings.png" alt="Page2Markdown settings page" loading="lazy" />
+        </div>
+      </section>
 
-      <h2>Free and open source</h2>
-      <p>
-        Page2Markdown is MIT licensed. Read the code, file an issue, or send a pull request — and if
-        it saves you time, a ⭐ on
-        <a href="https://github.com/phuthuycoding/Page2Markdown">GitHub</a> helps other people find it.
-      </p>
+      <section class="band closing">
+        <div class="wrap center">
+          <h2>Free, and open to read</h2>
+          <p class="section-lede center-text">
+            MIT licensed, no telemetry to take on faith — the whole extension is there to read. If it
+            saves you time, a star helps other people find it.
+          </p>
+          <div class="cta center-cta">
+            <a class="btn btn-primary" href="https://github.com/phuthuycoding/Page2Markdown">★ Star on GitHub</a>
+            <a class="btn" href="privacy.html">Read the privacy policy</a>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="wrap">
-      Made by <a href="https://github.com/phuthuycoding">phuthuycoding</a> ·
-      <a href="https://github.com/phuthuycoding/Page2Markdown">Source</a> ·
-      <a href="privacy.html">Privacy</a>
+    <footer>
+      <div class="wrap footer-inner">
+        <span>
+          Made by <a href="https://github.com/phuthuycoding">phuthuycoding</a> · MIT licensed
+        </span>
+        <span>
+          <a href="https://github.com/phuthuycoding/Page2Markdown">Source</a> ·
+          <a href="privacy.html">Privacy</a>
+        </span>
+      </div>
     </footer>
+
+    <script src="app.js"></script>
   </body>
 </html>
