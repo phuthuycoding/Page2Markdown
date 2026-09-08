@@ -2,7 +2,7 @@
 
 # Page2Markdown
 
-*[English](README.md)*
+**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · *[English](README.md)*
 
 Chrome extension (Manifest V3) lưu trang web đang xem — hoặc đúng vùng đang bôi đen — thành file Markdown sạch, kèm YAML frontmatter để bỏ thẳng vào Obsidian.
 
@@ -125,9 +125,12 @@ Tất cả chỉ là link tĩnh — không script, không tracker, nên không �
 bun run package   # build + đóng gói store/page2markdown-<version>.zip
 ```
 
-- `store/LISTING.md` — toàn bộ text cần dán vào Developer Dashboard, kèm giải trình từng permission.
-- `store/screenshots/` — 3 ảnh 1280×800 đúng chuẩn listing.
-- `store/privacy-policy.html` — trang chính sách, cần đưa lên một URL public rồi dán vào ô Privacy policy.
+Thư mục `store/` **không nằm trong git** (xem `.gitignore`) — toàn bộ là tài sản dựng lại được:
+
+- `store/LISTING.md` — text dán vào Developer Dashboard, kèm giải trình từng permission.
+- `store/screenshots/` — 3 ảnh 1280×800; `store/promo/` — tile 440×280 (bắt buộc) và marquee 1400×560.
+- Trang chính sách giờ nằm ở `docs/privacy.html`, phát hành qua GitHub Pages tại
+  <https://phuthuycoding.github.io/Page2Markdown/privacy.html> — đó là URL dán vào ô Privacy policy.
 
 Giao diện extension dùng tiếng Anh; tài liệu trong repo giữ tiếng Việt.
 

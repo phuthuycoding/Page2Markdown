@@ -1,7 +1,10 @@
 node_modules
 dist
 *.zip
-store/*.zip
 
 # rác do Playwright MCP sinh ra
 .playwright-mcp/
+
+# Tài sản nộp store: zip, ảnh listing, promo tile. Dựng lại được bất cứ lúc nào
+# bằng `bun run package` và các script dựng ảnh, nên không cần theo dõi trong git.
+store/

@@ -9,7 +9,7 @@
 
 A Chrome extension (Manifest V3) — a **web clipper** that turns the page you are reading, or just the part you highlighted, into a clean **Markdown** file with **YAML frontmatter**, ready for **Obsidian**, Logseq, or any plain notes folder.
 
-*[Tiếng Việt](README.vi.md)*
+**[Website](https://phuthuycoding.github.io/Page2Markdown/)** · *[Tiếng Việt](README.vi.md)*
 
 ## What you get
 
@@ -19,7 +19,7 @@ A Chrome extension (Manifest V3) — a **web clipper** that turns the page you a
 - **An editor, not a popup.** Formatting toolbar and live preview, so you fix things before the file lands on disk.
 - **Nothing leaves your machine.** No server, no account, no analytics, no tracking.
 
-![Page2Markdown editor](store/screenshots/01-preview.png)
+![Page2Markdown editor](assets/screenshot-editor.png)
 
 ## How it works
 
@@ -148,7 +148,7 @@ Inside the editor, changing **scope** or **images** only affects your next captu
 
 ## Privacy
 
-No server, no account, no analytics, no tracking. The extension reads a page only when you ask, and only the page you are on. Captured text is held in local storage just long enough for the editor tab to pick it up, then deleted. See [store/privacy-policy.html](store/privacy-policy.html).
+No server, no account, no analytics, no tracking. The extension reads a page only when you ask, and only the page you are on. Captured text is held in local storage just long enough for the editor tab to pick it up, then deleted. See the [privacy policy](https://phuthuycoding.github.io/Page2Markdown/privacy.html).
 
 ## Configuration for maintainers
 
