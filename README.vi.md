@@ -75,7 +75,7 @@ bun run test:e2e   # mở Chrome thật, kiểm extension đã build (cần buil
 - `tests/filename.test.ts` — slug tiếng Việt, ký tự cấm, thư mục con, chặn path traversal.
 - `tests/markdown.test.ts` — YAML frontmatter không vỡ vì tiêu đề có dấu nháy hay dấu hai chấm.
 - `tests/markdown-commands.test.ts` — từng nút toolbar, gồm cả bấm lần hai để gỡ định dạng.
-- `tests/config.test.ts` — khi nào mở welcome, gợi ý affiliate xoay theo ngày.
+- `tests/config.test.ts` — khi nào mở welcome, cấu hình nút ủng hộ.
 - `tests/e2e/` — extension load được, menu, storage, downloads, editor dựng nội dung từ draft + toolbar + preview, service worker không ném lỗi.
 
 ## Cấu trúc
@@ -114,7 +114,10 @@ Trong editor, đổi **phạm vi** hay **ảnh** chỉ có tác dụng cho lần
 ## Kiếm tiền
 
 - `WELCOME_URL` trong `src/config/index.ts` — trang chào mừng nằm trên web của mình, mở khi cài mới và khi lên minor/major. Để rỗng thì không mở tab nào. Đặt trên web chứ không phải trang extension để sửa nội dung mà không phải nộp lại bản build.
-- `AFFILIATE_LINKS` — một dòng gợi ý duy nhất ở chân editor, xoay theo ngày. Chỉ là link tĩnh: không script, không tracker, nên không đụng CSP của MV3 và giữ nguyên được lời hứa "no tracking" trên store.
+- `AUTHOR_NAME` / `AUTHOR_URL` / `REPO_URL` — dòng credit ở chân editor và trang cài đặt, kèm lời mời star. **Nhớ chuyển repo sang public trước khi phát hành**, không thì người dùng bấm vào chỉ nhận 404.
+- `DONATE_URL` — để rỗng thì không hiện gì. Repo public rồi thì dùng thẳng `https://github.com/sponsors/<username>`: 0% phí và Việt Nam nằm trong danh sách vùng được hỗ trợ.
+
+Tất cả chỉ là link tĩnh — không script, không tracker, nên không đụng CSP của MV3 và giữ nguyên được lời hứa "no tracking" trên store.
 
 ## Nộp Chrome Web Store
 

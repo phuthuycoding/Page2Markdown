@@ -20,14 +20,24 @@ export function shouldWelcome(previous: string | undefined, current: string): bo
   return prevMajor !== curMajor || prevMinor !== curMinor;
 }
 
+/** Tác giả, hiện ở chân editor và trang cài đặt. */
+export const AUTHOR_NAME = 'phuthuycoding';
+export const AUTHOR_URL = 'https://github.com/phuthuycoding';
+
+/**
+ * Repo công khai. LƯU Ý: repo đang để private cho tới khi extension lên store —
+ * bật link này ra bản phát hành trước khi chuyển repo sang public thì người
+ * dùng bấm vào chỉ nhận 404.
+ */
+export const REPO_URL = 'https://github.com/phuthuycoding/Page2Markdown';
+
 /**
  * Nút ủng hộ. Chỉ là một link ra ngoài — không nhúng cổng thanh toán nào vào
- * extension, vì Chrome Web Store cấm xử lý thanh toán bên trong extension.
+ * extension, vì Chrome Web Store cấm xử lý thanh toán bên trong.
  *
- * Để rỗng thì nút tự ẩn ở cả editor lẫn trang cài đặt.
- *
- * Gợi ý chọn nền tảng: Ko-fi không thu phí nền tảng (0%), Buy Me a Coffee thu
- * 5%; cả hai đều nhận thẻ quốc tế, hợp với người dùng ngoài Việt Nam.
+ * Để rỗng thì nút tự ẩn. Repo public rồi thì dùng thẳng
+ * https://github.com/sponsors/<username>: 0% phí và Việt Nam có trong danh
+ * sách vùng được hỗ trợ.
  */
 export const DONATE_URL = '';
 

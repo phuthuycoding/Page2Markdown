@@ -1,4 +1,4 @@
-import { DONATE_LABEL, DONATE_URL } from '../config';
+import { AUTHOR_NAME, AUTHOR_URL, DONATE_LABEL, DONATE_URL, REPO_URL } from '../config';
 import { downloadService } from '../services/download.service';
 import { draftService } from '../services/draft.service';
 import { settingsService } from '../services/settings.service';
@@ -37,7 +37,7 @@ const el = {
   copy: document.getElementById('copy') as HTMLButtonElement,
   download: document.getElementById('download') as HTMLButtonElement,
   openOptions: document.getElementById('openOptions') as HTMLButtonElement,
-  donate: document.getElementById('donate') as HTMLAnchorElement,
+  credits: document.getElementById('credits') as HTMLElement,
   toast: document.getElementById('toast') as HTMLElement,
 };
 
@@ -101,11 +101,42 @@ function stripHeader(text: string): string {
   return rest;
 }
 
-function renderDonate(): void {
-  if (!DONATE_URL) return;
-  el.donate.href = DONATE_URL;
-  el.donate.textContent = `☕ ${DONATE_LABEL}`;
-  el.donate.classList.remove('hidden');
+function externalLink(href: string, text: string, className?: string): HTMLAnchorElement {
+  const anchor = document.createElement('a');
+  anchor.href = href;
+  anchor.target = '_blank';
+  // noopener: trang mở ra không được cầm window.opener của trang extension.
+  anchor.rel = 'noopener noreferrer';
+  anchor.textContent = text;
+  if (className) anchor.className = className;
+  return anchor;
+}
+
+/** Dòng chân trang: tác giả, lời mời star, và nút ủng hộ nếu đã cấu hình. */
+function renderCredits(): void {
+  const parts: Node[] = [];
+  const separator = (): HTMLElement => {
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.textContent = '·';
+    return dot;
+  };
+
+  parts.push(document.createTextNode('Made by '), externalLink(AUTHOR_URL, AUTHOR_NAME));
+
+  if (REPO_URL) {
+    parts.push(
+      separator(),
+      document.createTextNode('Free and open source — '),
+      externalLink(REPO_URL, '★ star it on GitHub', 'star')
+    );
+  }
+
+  if (DONATE_URL) {
+    parts.push(separator(), externalLink(DONATE_URL, `☕ ${DONATE_LABEL}`));
+  }
+
+  el.credits.replaceChildren(...parts);
 }
 
 function bindToolbar(): void {
@@ -225,7 +256,7 @@ async function bootstrap(): Promise<void> {
     '\n';
 
   renderFilename();
-  renderDonate();
+  renderCredits();
   bindToolbar();
   bindControls();
   schedulePreview();

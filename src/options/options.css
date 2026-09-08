@@ -161,17 +161,26 @@ code {
   color: var(--accent);
 }
 
-.donate {
+.credits {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 12px;
   color: var(--muted);
-  text-decoration: none;
-  padding: 5px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
 }
 
-.donate:hover {
+.credits a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.credits a:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  text-decoration: underline;
+}
+
+.credits .star {
+  color: var(--accent);
+  font-weight: 600;
 }

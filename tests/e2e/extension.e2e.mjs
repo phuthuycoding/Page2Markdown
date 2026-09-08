@@ -226,8 +226,27 @@ try {
   const previewHeading = await editor.frameLocator('#preview').locator('h2').first().textContent();
   check('preview render markdown thành HTML', previewHeading?.trim() === 'Heading', String(previewHeading));
 
-  // DONATE_URL đang để rỗng nên nút phải ẩn hẳn, không để lại ô trống hay link chết.
-  check('chưa cắm DONATE_URL thì nút ủng hộ ẩn', !(await editor.isVisible('#donate')));
+  const credits = await editor.evaluate(() => {
+    const root = document.getElementById('credits');
+    return {
+      text: root?.textContent ?? '',
+      links: [...(root?.querySelectorAll('a') ?? [])].map((a) => ({
+        href: a.href,
+        rel: a.rel,
+        target: a.target,
+      })),
+    };
+  });
+  check('chân editor có credit tác giả', credits.text.includes('Made by phuthuycoding'), credits.text);
+  check('có lời mời star kèm link repo', credits.links.some((l) => l.href.includes('github.com/phuthuycoding/Page2Markdown')), JSON.stringify(credits.links));
+  check('lời mời star đọc ra là star', credits.text.includes('star it on GitHub'), credits.text);
+  check(
+    'mọi link credit mở tab mới và có rel noopener',
+    credits.links.length > 0 && credits.links.every((l) => l.target === '_blank' && l.rel.includes('noopener')),
+    JSON.stringify(credits.links)
+  );
+  // DONATE_URL đang rỗng nên không được có link ủng hộ nào lòi ra.
+  check('chưa cắm DONATE_URL thì không hiện nút ủng hộ', !credits.text.includes('coffee'), credits.text);
 
   // Bấm đúng nút save và kiểm tới cùng: chrome.downloads.download() trả id ngay
   // khi nhận lệnh, nên nếu chỉ tin vào id thì file rỗng vẫn báo thành công.

@@ -1,4 +1,4 @@
-import { DONATE_LABEL, DONATE_URL } from '../config';
+import { AUTHOR_NAME, AUTHOR_URL, DONATE_LABEL, DONATE_URL, REPO_URL } from '../config';
 import { settingsService } from '../services/settings.service';
 import type {
   BulletMarker,
@@ -153,18 +153,30 @@ function bindAutoSave(): void {
   });
 }
 
-function renderDonate(): void {
-  if (!DONATE_URL) return;
-  const link = document.getElementById('donate') as HTMLAnchorElement;
-  link.href = DONATE_URL;
-  link.textContent = `☕ ${DONATE_LABEL}`;
-  link.classList.remove('hidden');
+function externalLink(href: string, text: string, className?: string): HTMLAnchorElement {
+  const anchor = document.createElement('a');
+  anchor.href = href;
+  anchor.target = '_blank';
+  anchor.rel = 'noopener noreferrer';
+  anchor.textContent = text;
+  if (className) anchor.className = className;
+  return anchor;
+}
+
+function renderCredits(): void {
+  const container = document.getElementById('credits') as HTMLElement;
+  const parts: Node[] = [document.createTextNode('Made by '), externalLink(AUTHOR_URL, AUTHOR_NAME)];
+
+  if (REPO_URL) parts.push(externalLink(REPO_URL, '★ Star on GitHub', 'star'));
+  if (DONATE_URL) parts.push(externalLink(DONATE_URL, `☕ ${DONATE_LABEL}`));
+
+  container.replaceChildren(...parts);
 }
 
 async function bootstrap(): Promise<void> {
   applyToForm(await settingsService.load());
   bindAutoSave();
-  renderDonate();
+  renderCredits();
 }
 
 void bootstrap();

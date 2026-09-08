@@ -124,6 +124,16 @@ Inside the editor, changing **scope** or **images** only affects your next captu
 
 No server, no account, no analytics, no tracking. The extension reads a page only when you ask, and only the page you are on. Captured text is held in local storage just long enough for the editor tab to pick it up, then deleted. See [store/privacy-policy.html](store/privacy-policy.html).
 
+## Configuration for maintainers
+
+`src/config/index.ts` holds the few values you may want to change when publishing your own build:
+
+- `AUTHOR_NAME` / `AUTHOR_URL` / `REPO_URL` — the credit line at the bottom of the editor and the settings page.
+- `DONATE_URL` — leave empty and no donation link renders at all.
+- `WELCOME_URL` — a page on your own site, opened on install and on minor/major upgrades. Empty means no tab is ever opened.
+
+All of them are plain links: no scripts, no trackers, nothing that would contradict the privacy claims above.
+
 ## Contributing
 
 Issues and pull requests are welcome. Run `bun run check` before opening a PR; `bun run test:e2e` needs a Chrome that Playwright can drive (`bunx playwright install chromium`).
