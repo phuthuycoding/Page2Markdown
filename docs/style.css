@@ -388,6 +388,8 @@ kbd {
 
 .shot {
   width: 100%;
+  /* Thiếu height:auto thì grid item bị kéo giãn theo ô và ảnh méo tỉ lệ. */
+  height: auto;
   display: block;
   margin-top: 48px;
   border: 1px solid var(--border);
