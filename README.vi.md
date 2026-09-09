@@ -2,6 +2,11 @@
 
 # Page2Markdown
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/knlheklmhjhcgpdccgfapfkikddmdgbo?label=Chrome%20Web%20Store&color=6d3fe8&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
+[![Users](https://img.shields.io/chrome-web-store/users/knlheklmhjhcgpdccgfapfkikddmdgbo?label=users&color=22c55e)](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
+
+### [→ Cài từ Chrome Web Store](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
+
 **[Website](https://phuthuycoding.github.io/Page2Markdown/)** · _[English](README.md)_
 
 Chrome extension (Manifest V3) lưu trang web đang xem — hoặc đúng vùng đang bôi đen — thành file Markdown sạch, kèm YAML frontmatter để bỏ thẳng vào Obsidian.
@@ -54,6 +59,10 @@ editor ── frontmatter + tiêu đề + thân bài, sửa tay được
 - **Sửa tiêu đề chỉ dựng lại phần đầu file.** Frontmatter và dòng H1 được thay, phần thân người dùng đã sửa tay thì giữ nguyên.
 
 ## Cài đặt
+
+**[Cài từ Chrome Web Store](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)** — cách nhanh nhất, Chrome tự cập nhật về sau.
+
+Muốn tự build:
 
 ```bash
 bun install

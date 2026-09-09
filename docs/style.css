@@ -137,6 +137,17 @@ code {
   color: #fff;
 }
 
+/* Nút cài có icon: đặt icon và chữ trên cùng một hàng, canh giữa theo trục dọc. */
+.btn-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.btn-store img {
+  border-radius: 4px;
+}
+
 .btn-sm {
   padding: 7px 15px;
   font-size: 14px;

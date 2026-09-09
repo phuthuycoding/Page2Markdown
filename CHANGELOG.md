@@ -10,7 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [0.1.0] — 2026-09-08
 
-First release, submitted to the Chrome Web Store.
+First release. [Live on the Chrome Web Store](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo) since 9 September 2026.
 
 ### Added
 

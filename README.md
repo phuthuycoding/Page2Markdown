@@ -2,12 +2,15 @@
 
 # Page2Markdown — save any web page as Markdown
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/knlheklmhjhcgpdccgfapfkikddmdgbo?label=Chrome%20Web%20Store&color=6d3fe8&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
+[![Users](https://img.shields.io/chrome-web-store/users/knlheklmhjhcgpdccgfapfkikddmdgbo?label=users&color=22c55e)](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-6d3fe8.svg)](LICENSE)
-[![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-6d3fe8.svg)](manifest.json)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)](tsconfig.json)
 [![Tests](https://img.shields.io/badge/tests-66%20unit%20%2B%2030%20e2e-22c55e.svg)](#tests)
 
 A Chrome extension (Manifest V3) — a **web clipper** that turns the page you are reading, or just the part you highlighted, into a clean **Markdown** file with **YAML frontmatter**, ready for **Obsidian**, Logseq, or any plain notes folder.
+
+### [→ Install from the Chrome Web Store](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)
 
 **[Website](https://phuthuycoding.github.io/Page2Markdown/)** · _[Tiếng Việt](README.vi.md)_
 
@@ -69,6 +72,10 @@ editor ── frontmatter + title + body, fully editable
 - **Editing the title only rebuilds the header.** The frontmatter block and the H1 are replaced; anything you typed in the body is left alone.
 
 ## Install
+
+**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/page2markdown/knlheklmhjhcgpdccgfapfkikddmdgbo)** — that is all most people need.
+
+To build it yourself:
 
 ```bash
 bun install
